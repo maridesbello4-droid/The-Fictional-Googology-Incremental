@@ -6,7 +6,7 @@ Get More Points By Purchasing Point Upgrades! Can You Get To Limit Of Extending 
 **A Sequel To Numbers 0 To Never: The Game**
 
 Plans:
-Arrow currency.
+Tetration currency.
 Ordinals
 Absolute infinity will have a force reset unless you break Absolute Infinity
 
