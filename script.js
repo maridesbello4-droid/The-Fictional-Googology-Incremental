@@ -62,3 +62,64 @@ function tab(tab){
 }
 
 tab('Upgrades');
+
+let arrows = 0;
+let arrowUpg = [0,0,0,0];
+
+function prestigeGain() {
+  return Math.floor(Math.sqrt(points / 1e6));
+}
+
+function doPrestige() {
+  let gain = prestigeGain();
+  if (gain <= 0) return;
+
+  arrows += gain;
+
+  // reset normal layer
+  points = 0;
+  pps = 0;
+  numOfPg1 = 0;
+  numOfPu1 = 0;
+
+  updateUI();
+}
+
+function buyArrowUpg1(){
+ if(arrows >= 1 && arrowUpg[0]==0){
+   arrows -= 1;
+   arrowUpg[0]=1;
+ }
+}
+
+function buyArrowUpg2(){
+ if(arrows >= 2 && arrowUpg[1]==0){
+   arrows -= 2;
+   arrowUpg[1]=1;
+ }
+}
+
+function buyArrowUpg3(){
+ if(arrows >= 3 && arrowUpg[2]==0){
+   arrows -= 3;
+   arrowUpg[2]=1;
+ }
+}
+
+function buyArrowUpg4(){
+ if(arrows >= 5 && arrowUpg[3]==0){
+   arrows -= 5;
+   arrowUpg[3]=1;
+ }
+}
+
+let genPower = arrowUpg[0] ? 2 : 1;
+let utilPower = arrowUpg[1] ? 2 : 1;
+
+pps = (numOfPg1 * genPower) * (1 + numOfPu1 * 0.05 * utilPower);
+
+if(arrowUpg[3]) pps += 10;
+
+let costMult = arrowUpg[2] ? 0.33 : 1;
+pg1Cost = basePg1Cost * Math.pow(1.15, numOfPg1) * costMult;
+
